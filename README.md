@@ -19,9 +19,9 @@ MySQL is choosed as the database as it is generally supported.
 - MySQL
 
 ### Install
-1. 安装 Angular 部分的插件，打开 `angular-part`，输入 `bower install`
-2. 安装 Node 部分的插件，打开 `openMind`，输入 `npm install`
-3. 在 `openMind` 文件夹输入 `npm start`，打开 server
+1. Install Angular part，open `angular-part`，type `bower install`
+2. Install Node part，open `openMind`，type `npm install`
+3. In `openMind` folder type `npm start`，open server
 4. Open the browser and go to the url `localhost:3000`
 
 ### Database Config
