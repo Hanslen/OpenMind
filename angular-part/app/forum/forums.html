@@ -1,0 +1,58 @@
+<div ng-include src="'header.html'"></div>
+
+<div class="container">
+  <table class="table">
+    <caption>Forums</caption>
+    <thead>
+      <tr>
+        <th></th>
+        <th>发布者</th>
+        <th>主题</th>
+        <th>内容</th>
+        <th>时间</th>
+        <th>评论数</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="forum in forums">
+        <td><img ng-src="{{forum.imageUrl}}" alt="" style="width:20px"/></td>
+        <td>{{forum.name}}</td>
+        <td>{{forum.title}}</td>
+        <td>
+        <a ng-href="#/forums/{{forum.forumId}}">{{forum.content}}</a></td>
+        <td>{{forum.time}}</td>
+
+        <td>{{forum.numOfCom}}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <td colspan="3">
+        <button class="btn" href="#" ng-class="nextPageDisabledClass()"
+          ng-click="loadMore()">加载更多</button>
+      </td>
+    </tfoot>
+  </table>
+  <div class="panel panel-default" ng-if="isAuthenticated()">
+      <div class="panel-heading">
+        <h4 class="panel-title">添加Forum</h4>
+      </div>
+      <div id="collapseOne" class="panel-collapse collapse in">
+        <div class="panel-body">
+          <form role="form" ng-submit="add_forum()">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="请输入forum标题" ng-model="$parent.forum_header"/>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" rows="3" placeholder="请输入内容" ng-model="$parent.forum_content"></textarea>
+            </div>
+            <div class="text-right">
+              <button type="submit" class="btn btn-primary">发布</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default" ng-if="!isAuthenticated()">
+    	<p>你需要先登录才能发表forums</p>
+    </div>
+</div>

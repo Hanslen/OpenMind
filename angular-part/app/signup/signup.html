@@ -1,0 +1,34 @@
+<div ng-include src="'header.html'"></div>
+
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <div class="basic-login">
+      <form ng-submit="signup()">
+        <div class="login-form">
+          <div class="form-group">
+            <label for="register-username"><i class="icon-user"></i> <b>Username</b></label>
+            <input type="text" class="form-control login-field" value="" placeholder="Enter your Username" id="login-name" ng-model="user.username" />
+            <label class="login-field-icon fui-user" for="login-name"></label>
+          </div>
+          <div class="form-group">
+            <label for="register-username"><i class="icon-user"></i> <b>Email</b></label>
+            <input type="text" class="form-control login-field" value="" placeholder="Enter your Email" id="login-name" ng-model="user.email" />
+            <label class="login-field-icon fui-mail" for="login-name"></label>
+          </div>
+          <div class="form-group">
+            <label for="register-username"><i class="icon-user"></i> <b>Password</b></label>
+            <input type="password" class="form-control login-field" value="" placeholder="Enter your Password" id="login-name" ng-model="user.password" />
+            <label class="login-field-icon fui-lock" for="login-pass"></label>
+          </div>
+          <div class="form-group">
+            <label for="register-username"><i class="icon-user"></i> <b>Password Again</b></label>
+            <input type="password" class="form-control login-field" value="" placeholder="Enter your Password Again" id="login-pass" ng-model="password_again" />
+            <label class="login-field-icon fui-lock" for="login-pass"></label>
+          </div>
+          <label class="text-danger">{{error_message}}</label>
+          <button type="submit" class="btn btn-primary btn-lg btn-block" href="#">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

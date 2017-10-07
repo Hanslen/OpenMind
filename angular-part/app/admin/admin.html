@@ -1,0 +1,75 @@
+﻿<div ng-include src="'header.html'"></div>
+<div class = "container">
+<div class="container">
+	<h1>Admin page</h1>
+	<hr>
+	<form ng-submit="sendAll()">
+		<p>Post the message to all</p>
+		<input type="text" ng-model = "messageA.content" placeholder="Write the message"/><br/><br/>
+		<input type="text" ng-model = "messageA.targetUrl" placeholder="Write the link"/><br/><br/>
+		<input type="submit" value="send"/>
+	</form>
+	<hr>
+	<form ng-submit="sendOne()">
+		<p>Post the message to one person</p>
+			<input type = "text" ng-model = "messageO.person" placeholder="To who?"/><br/><br/>
+			<input type="text" ng-model = "messageO.content" placeholder="Write the message"/><br/><br/>
+			<input type="text" ng-model = "messageO.targetUrl" placeholder="Write the link"/><br/><br/>
+			<input type="submit" value="send"/>
+	</form>
+	<hr>
+	<table class="table">
+ 	<thead>
+		<tr>
+			<th>申请时间</th>
+			<th>申请人</th>
+			<th>cv</th>
+			<th>education</th>
+			<th>tags</th>
+			<th>keyWords</th>
+			<th>comments</th>
+			<th>operation</th>
+			
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat = "application in all_applications">
+			<td>{{application.applicationTime}}</td>
+			<td>{{application.userID}}</td>
+			<td>{{application.cv}}</td>
+			<td>{{application.education}}</td>
+			<td>{{application.tags}}</td>
+			<td>{{application.keyWords}}</td>
+			<td><input type = "text" ng-model="application.comments" value = "{{application.comments}}" /></td>
+			<td><button class="btn" ng-click="approve(application)">通过</button>
+			<button class="btn" ng-click="reject(application)">驳回</button></td>
+		</tr>
+	</table>
+
+<p style="color:red">{{error_message}}</p>
+<p style="color:green">{{token}}</p>
+<hr>
+<p>禁言</p>
+<table class="table">
+	<thead>
+		<tr>
+			<th>用户</th>
+			<th>操作</th>
+		</tr>
+	</thead>	
+	<tbody>
+		<tr ng-repeat="oneuser in alluser">
+			<td>{{oneuser.name}}</td>
+			<td>
+				<button ng-click="jinyan(oneuser.userId, 3600000)">1小时</button>
+				<button ng-click="jinyan(oneuser.userId, 7200000)">2小时</button>
+				<button ng-click="jinyan(oneuser.userId, 14400000)">4小时</button>
+				<button ng-click="jinyan(oneuser.userId, 43200000)">12小时</button>
+				<button ng-click="jinyan(oneuser.userId, 86400000)">24小时</button>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+</div>
+</div>

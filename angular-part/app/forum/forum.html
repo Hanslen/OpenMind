@@ -1,0 +1,90 @@
+<div ng-include src="'header.html'"></div>
+<div class="container">
+  <img ng-src="{{forum.imageUrl}}" alt="img" style="width:30px;"/>
+  <h3>{{forum.title}}</h3>
+  <p>发布日期：{{forum.time | date:'medium'}}</p>
+  <p>{{forum.content}}</p>
+  <!-- <iframe src="http://www.dian.fm/Openmindbroadcast" width="700" height="600" frameborder="0" border="0"></iframe> -->
+
+  
+
+  <br>
+  <legend>评论</legend>
+  <ul>
+    <li ng-repeat="comment in comments">
+      <img ng-src="{{comment.imageUrl}}" alt="" width="30px" ng-href="#/user_profile/{{comment.userId}}" />
+      <a ng-href="#/user_profile/{{comment.userId}}">
+        <strong>{{comment.name}}</strong>
+      </a>
+      <button type="button" ng-disabled="comment.liked" class="btn btn-default btn-sm" ng-if="!already_liked(comment.forumCommentId)" ng-click="like_comment(comment)">
+        <span class="glyphicon glyphicon-thumbs-up"></span> {{comment.likeNum}}
+      </button>
+      <button type="button" disabled="true" class="btn btn-default btn-sm" ng-if="already_liked(comment.forumCommentId)">
+        <span class="glyphicon glyphicon-thumbs-up"></span> {{comment.likeNum}}
+      </button>
+      <a data-toggle="modal" data-target="#myModalcomment{{comment.forumCommentId}}">评论</a>
+      <a ng-if="isAdmin()" style="float:right" ng-click="deleteForumComment(comment.forumCommentId)">删除</a>
+
+      <!-- modal fade -->
+<div class="modal fade" id="myModalcomment{{comment.forumCommentId}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" ng-if="isAuthenticated()">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h2 align="center"class="modal-title" id="myModalLabel">评论TA</h2>
+                        </div>
+                    <div class="modal-body">
+                      <form ng-submit="add_commentincomment(comment.forumCommentId)">   
+                          <textarea class="form-control" rows="10" placeholder="评论内容" ng-model="$parent.commentincomment_content"></textarea>
+                          <br/>
+                          <input style="width:40%;margin-left:30%;"type="submit" style="float:right"class="btn btn-success" value="提交biu"/>
+                          <br/>
+                      </form>
+                    </div>
+                    </div>
+                </div>
+                <div class="modal-dialog" ng-if="!isAuthenticated()">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h2 align="center"class="modal-title" id="myModalLabel">你需要先登录才能评论：（</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+      <p>评论时间：{{comment.commentTime}}</p>
+      <p>{{comment.content}}</p>
+      <ul ng-repeat="incomment in incomments">
+        <li ng-if="checkSame(incomment.forumCommentId, comment.forumCommentId)">
+          {{incomment.name}} 说：{{incomment.content}}
+          <a ng-if="isAdmin()" style="float:right" ng-click="deleteForumCommentinComment(incomment.incommentId)">删除</a>
+        </li>
+      </ul>
+
+      <hr>
+    </li>
+    <div class="panel panel-default" ng-if="isAuthenticated()">
+      <div class="panel-heading">
+        <h4 class="panel-title">添加评论</h4>
+      </div>
+      <div id="collapseOne" class="panel-collapse collapse in">
+        <div class="panel-body">
+          <form role="form" ng-submit="add_comment()">
+            <div class="form-group">
+              <textarea class="form-control" rows="3" placeholder="请输入内容" ng-model="$parent.comment_content"></textarea>
+            </div>
+            <div class="text-right">
+              <button type="submit" class="btn btn-primary">确认</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default" ng-if="!isAuthenticated()">
+      <p>你需要先登录才能评论和赞forum</p>
+    </div>
+  </ul>
+</div>
+

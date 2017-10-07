@@ -1,0 +1,70 @@
+<div ng-include src="'header.html'"></div>
+
+<div class="container">
+  <ul id="myTab" class="nav nav-tabs">
+    <li class="active">
+      <a href="#discussion_application" data-toggle="tab">已报名的研讨</a>
+    </li>
+    <li><a href="#discussion_book" data-toggle="tab">收藏的研讨</a></li>
+  </ul>
+
+  <div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="discussion_application">
+      <table class="table">
+        <caption>已报名的研讨</caption>
+        <thead>
+          <tr>
+            <th>图片</th>
+            <th>标题</th>
+            <th>日期</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="discussion in discussion_applications">
+            <td>
+              <a ng-href="#/discussions/{{discussion.discussionId}}">
+                <img ng-src="{{discussion.imageUrl}}" alt="" />
+              </a>
+            </td>
+            <td>{{discussion.title}}</td>
+            <td>{{discussion.startTime | date:'medium'}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tab-pane fade" id="discussion_book">
+      <table class="table">
+        <caption>收藏的研讨</caption>
+        <thead>
+          <tr>
+            <th>图片</th>
+            <th>标题</th>
+            <th>日期</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="discussion in discussions">
+            <td>
+              <a ng-href="#/discussions/{{discussion.discussionId}}">
+                <img ng-src="{{discussion.imageUrl}}" alt="" />
+              </a>
+            </td>
+            <td>{{discussion.title}}</td>
+            <td>{{discussion.startTime | date:'medium'}}</td>
+            <td>
+              <button type="button" name="button" class="btn btn-danger" ng-click="deleteDiscussion(discussion, discussion.discussionId)">删除</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $('#myTab a').click(function(e) {
+    e.preventDefault()
+    $(this).tab('show')
+  });
+</script>

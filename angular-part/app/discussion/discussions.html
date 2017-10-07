@@ -1,0 +1,27 @@
+<div ng-include src="'header.html'"></div>
+
+<div class="container">
+  <table class="table">
+    <caption>全部研讨</caption>
+    <thead>
+      <tr>
+        <th>图片</th>
+        <th>标题</th>
+        <th>日期</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="discussion in pagedItems">
+        <td><a ng-href="#/discussions/{{discussion.discussionId}}"><img ng-src="{{discussion.imageUrl}}" alt="" /></a></td>
+        <td>{{discussion.title}}</td>
+        <td>{{discussion.postTime | date:'medium'}}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <td colspan="3">
+        <button class="btn" href="#" ng-class="nextPageDisabledClass()"
+          ng-click="loadMore()">加载更多</button>
+      </td>
+    </tfoot>
+  </table>
+</div>

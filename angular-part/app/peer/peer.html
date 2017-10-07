@@ -1,0 +1,31 @@
+<div ng-include src="'header.html'"></div>
+
+<div class="container">
+  <h3>{{peer.name}}</h3>
+  <img ng-src="{{peer.imageUrl}}" alt="img" />
+  <br/>
+  <div ng-repeat="tag in peer.peer_tags">
+    <span class="label label-default">{{tag | peer_tags_translate}}</span>
+  </div>
+  <legend>愿意分享的话题</legend>
+  <div class="panel panel-default" ng-repeat="topic in topics">
+    <div class="panel-heading">{{topic.title}}</div>
+    <table class="table">
+      <td>
+        <img ng-src="{{topic.imageUrl}}" alt="" width="30px" />
+      </td>
+      <td>价格：{{topic.price}} / {{topic.time}}分钟</td>
+      <td><a class="btn btn-xs btn-primary" href="#/appointment/{{topic.topicId}}">点击预约</a>
+        <a class="btn btn-xs btn-primary" ng-if="!checkShow(topic.topicId)" ng-click="bookPeer(topic.topicId)">收藏</a>
+        <a class="btn btn-xs btn-primary" ng-if="checkShow(topic.topicId)" ng-click="cancelPeer(topic.topicId, topic)">已收藏</a>
+        <!-- <a ng-if="checkShow(topic.topicId)">卖萌：）</a> -->
+      </td>
+    </table>
+    <p>{{topic.content}}</p>
+    <span class="label label-default" ng-repeat="tag in topic.topic_tags">{{tag | topic_tags_translate}}</span>
+  </div>
+  <legend>教育经历</legend>
+  <p>{{peer.education}}</p>
+  <legend>简历</legend>
+  <p>{{peer.cv}}</p>
+</div>

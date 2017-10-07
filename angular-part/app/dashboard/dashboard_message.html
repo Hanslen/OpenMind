@@ -1,0 +1,23 @@
+<div ng-include src="'header.html'"></div>
+
+<div class="container">
+  <table class="table">
+    <caption>信息</caption>
+    <thead>
+      <tr>
+        <th>内容</th>
+        <th>时间</th>
+        <th>是否已经阅读</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="message in all_messages">
+        <td>{{message.content}}</td>
+        <td>{{message.postTime | date:'medium'}}</td>
+        <td>{{message.viewed.data[0] == 1}}</td>
+        <td><a ng-href="{{message.targetUrl}}" ng-click="viewMessage(message)">阅读</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

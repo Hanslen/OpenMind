@@ -1,0 +1,23 @@
+<div ng-include src="'header.html'"></div>
+
+<div class="container">
+  <table class="table">
+    <caption>预约的话题</caption>
+    <thead>
+      <tr>
+        <th>话题</th>
+        <th>预约时间</th>
+        <th>当前状态</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="appointment in appointments">
+        <td><a href="#/peers/{{appointment.peerId}}">{{appointment.title}}</a></td>
+        <td>
+          <li ng-repeat="time in appointment.times">{{time}}</li>
+        </td>
+        <td>{{appointment.status}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

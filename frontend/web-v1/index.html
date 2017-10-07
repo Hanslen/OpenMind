@@ -1,0 +1,168 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Openmindpeers</title>
+    
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/flat-ui.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="js/jquery.js"></script>
+	<script src = "js/my.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-default">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html"><img src = "img/logo.png"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a class = "navfont" href="./" data-toggle="modal" data-target="#signup" style = "color:white">SIGN UP</a></li>
+            <li><a></a></li>
+            <li><a class = "navfont" href="../navbar-fixed-top/" data-toggle="modal" data-target="#signin" style = "color:white">SIGN IN</a></li>
+            <li><a></a></li>
+            <li><a></a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+    </nav>
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+
+<!-- 
+	<div class = "nav before">
+		<a href = "index.html">
+			<img src="img/logo.png"/>
+		</a>
+		<div class = "log">
+			<a data-toggle="modal" data-target="#signup">SIGN UP</a>
+			<a data-toggle="modal" data-target="#signin">SIGN IN</a>
+		</div>
+	</div> -->
+
+
+
+
+
+
+	<img src="img/home.jpg" width="100%">
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<div class = "teacher">
+		<h3>Teacher Lists</h3>
+	</div>
+	<div class = "student">
+		<h3>Student Lists</h3>
+	</div>
+
+
+
+<div class="modal fade" id="signin" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+            <h3 class="modal-title" id="myModalLabel" style = "text-align:center;font-family:Arial">
+               SIGN IN
+            </h3>
+         </div>
+         <form action="" method="POST">
+	         <div class="modal-body">
+	         	<div class="login-form">
+            		<div class="form-group">
+            			<label>Username/Email</label>
+              				<input type="text" class="form-control login-field" value="" placeholder="Enter your username/Email" id="login-name" />
+              				<label class="login-field-icon fui-user" for="login-name"></label>
+            		</div>
+
+            		<div class="form-group">
+            			<label>Password</label>
+              			<input type="password" class="form-control login-field" value="" placeholder="Password" id="login-pass" />
+              			<label class="login-field-icon fui-lock" for="login-pass"></label>
+            		</div>
+            		<div class="modal-footer">
+	          		 	<button type="button" class="btn btn-default" 
+	               data-dismiss="modal">close
+	            		</button>
+	            		<button type="submit" class="btn btn-primary">
+	               Submit( ͒•ㅈ• ͒)
+	            		</button>
+
+            
+	         		</div>
+         	 	</div>
+	        </div>
+	        
+     	</form>
+      </div>
+</div>
+</div>
+
+<div class="modal fade" id="signup" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+            <h3 class="modal-title" id="myModalLabel"style = "text-align:center;font-family:Arial">
+               SIGN UP
+            </h3>
+         </div>
+         <form action="" method="POST">
+	         <div class="modal-body">
+	         	<div class="login-form">
+            		<div class="form-group">
+            			<label>Username</label>
+              				<input type="text" class="form-control login-field" value="" placeholder="Enter your username/Email" id="login-name" />
+              				<label class="login-field-icon fui-user" for="login-name"></label>
+            		</div>
+
+            		<div class="form-group">
+            			<label>Email</label>
+              				<input type="text" class="form-control login-field" value="" placeholder="Enter your username/Email" id="login-email" />
+              				<label class="login-field-icon fui-mail" for="login-mail"></label>
+            		</div>
+
+            		<div class="form-group">
+            			<label>Password</label>
+              			<input type="password" class="form-control login-field" value="" placeholder="Password" id="login-pass" />
+              			<label class="login-field-icon fui-lock" for="login-pass"></label>
+            		</div>
+            		<div class="form-group">
+            			<label>Password Again</label>
+              			<input type="password" class="form-control login-field" value="" placeholder="Enter the Password again" id="login-passagain" />
+              			<label class="login-field-icon fui-lock" for="login-pass"></label>
+            		</div>
+            		<div class="modal-footer">
+	          		 	<button type="button" class="btn btn-default" 
+	               data-dismiss="modal">close
+	            		</button>
+	            		<button type="submit" class="btn btn-primary">
+	               Submit( ͒•ㅈ• ͒)
+	            		</button>
+
+            
+	         		</div>
+         	 	</div>
+	        </div>
+	        
+     	</form>
+      </div>
+</div>
+</div>
+</body>
+</html>

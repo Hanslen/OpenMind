@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="myApp" class="no-js">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>OpenMind</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css"> -->
+  <!-- <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css"> -->
+  <!-- <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script> -->
+
+  <link rel="stylesheet" href="app.css">
+  <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style/angular-strap.css" rel="stylesheet">
+  <link href="bower_components/angular-ui-notification/dist/angular-ui-notification.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="bower_components/angular-bootstrap-datetimepicker/src/css/datetimepicker.css"/>
+  <!-- <link rel="stylesheet" href="bower_components/flat-ui/dist/css/flat-ui.css"> -->
+  <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.min.css" media="screen" title="no title" charset="utf-8">
+</head>
+
+<body>
+
+
+
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <div ng-view></div>
+
+
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-lg-12">
+        <ul class="nav nav-pills nav-justified">
+          <li><a href="/">© 2013 Company Name.</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+   <!-- add socket.io -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="bower_components/moment/moment.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- <script src="bower_components/flat-ui/dist/js/flat-ui.min.js"></script> -->
+
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <!-- <script src="bower_components/angular-mocks/angular-mocks.js"></script> -->
+  <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+  <script src="bower_components/angular-strap/dist/angular-strap.min.js"></script>
+  <script src="bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
+  <script src="bower_components/ng-file-upload/ng-file-upload-shim.min.js"></script>
+  <script src="bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+  <script src="bower_components/angular-ui-notification/dist/angular-ui-notification.min.js"></script>
+  <script src="bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
+  <script type="text/javascript" src="bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"></script>
+  <!-- <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script> -->
+
+  <script src="bower_components/satellizer/satellizer.min.js"></script>
+  <script src="app.js"></script>
+  <script src="mocks.js"></script>
+
+  <script src="view1/view1.js"></script>
+  <script src="view2/view2.js"></script>
+  <script src="index/index.js"></script>
+  <script src="login/login.js"></script>
+  <script src="signup/signup.js"></script>
+  <script src="broadcast/broadcasts.js"></script>
+  <script src="broadcast/broadcast.js"></script>
+  <script src="discussion/discussions.js"></script>
+  <script src="discussion/discussion.js"></script>
+  <script src="peer/peers.js"></script>
+  <script src="peer/peer.js"></script>
+  <script src="dashboard/account.js"></script>
+  <script src="dashboard/dashboard_broadcast.js"></script>
+  <script src="dashboard/dashboard_discussion.js"></script>
+  <script src="dashboard/dashboard_message.js"></script>
+  <script src="dashboard/dashboard_appointments.js"></script>
+  <script src="dashboard/dashboard_topic.js"></script>
+  <!--add application -->
+  <script src="application/application.js"></script>
+  <script src="admin/admin.js"></script>
+
+  <!-- add forum -->
+  <script src="forum/forums.js"></script>
+  <script src="forum/forum.js"></script>
+  
+  <script src="user_profile/user_profile.js"></script>
+  <script src="search/search.js"></script>
+  <script src="appointment/appointment.js"></script>
+  
+
+  <script src="services/broadcast.js"></script>
+  <script src="services/discussion.js"></script>
+  <script src="services/peer.js"></script>
+  <script src="services/user.js"></script>
+  <script src="services/user_profile_service.js"></script>
+  <script src="services/broadcast_comment.js"></script>
+  <script src="services/discussion_comment.js"></script>
+  <script src="services/message.js"></script>
+  <script src="services/topic.js"></script>
+  <script src="services/dataservice.js"></script>
+  <script src="services/socketIo.js"></script>
+
+  <!-- add forum -->
+  <script src="services/forum.js"></script>
+
+
+  <!-- weixin -->
+<script src="weixin/weixin.js"></script>
+<script src="weixin/require.js"></script>
+
+  <script src="filters/filters.js"></script>
+
+  <script src="components/version/version.js"></script>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/interpolate-filter.js"></script>
+
+</body>
+
+</html>

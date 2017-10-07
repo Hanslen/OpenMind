@@ -1,0 +1,25 @@
+<!-- pai code -->
+<div ng-include src="'header.html'"></div>
+
+<div class="container">
+  <table class="table">
+    <caption>收藏的话题</caption>
+    <thead>
+      <tr>
+        <th>图片</th>
+        <th>标题</th>
+        <th>日期</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="topic in topics">
+        <td><a ng-href="#/peers/{{topic.peerId}}"><img ng-src="{{topic.imageUrl}}" alt="" /></a></td>
+        <td>{{topic.title}}</td>
+        <td>{{topic.time | date:'medium'}}</td>
+        <td><button type="button" name="button" class="btn btn-danger" ng-click="deleteTopic(topic, topic.topicId)">删除</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- pai end -->

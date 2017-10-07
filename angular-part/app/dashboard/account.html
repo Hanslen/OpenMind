@@ -1,0 +1,202 @@
+<div ng-include src="'header.html'"></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label class="col-sm-2 control-label">邮箱</label>
+          <div class="col-sm-10">
+            <p class="form-control-static">{{user.email}}</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputPassword" class="col-sm-2 control-label">用户名</label>
+          <div class="col-sm-10">
+            <p class="form-control-static">{{user.name}} <a href="" data-toggle="modal" data-target="#edit_name">更改</a>
+            </p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputPassword" class="col-sm-2 control-label">密码</label>
+          <div class="col-sm-10">
+            <p class="form-control-static">******** <a href="" data-toggle="modal" data-target="#edit_password">更改</a></p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label class="col-sm-2 control-label">个人简介</label>
+          <div class="col-sm-10">
+            <textarea class="form-control" ng-model="update_detail.briefInto"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">学校</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" ng-model="update_detail.school" value="{{user.school}}"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">城市</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" ng-model="update_detail.city" value="{{user.city}}"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">年龄</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" ng-model="update_detail.age" value="{{user.age}}"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">性别</label>
+          <div class="col-sm-10">
+              <!-- <select class="form-control" ng-model="update_detail.gender">
+                <option value="男">男</option>
+                <option value="女">女</option>
+              </select> -->
+              <select class = "form-control"name="mySelect" id="mySelect"
+      ng-options="option.name for option in update_detail.gender.availableOptions track by option.id"
+      ng-model="update_detail.gender.selectedOption"></select>
+
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Skype</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" ng-model="update_detail.skype"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-11"></div>
+          <button class="btn" ng-click="update_userdetail_func()">更新</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <legend>当前头像</legend>
+      <img src="{{user.imageUrl}}" alt="" width="200px"/>
+      <legend>上传头像</legend>
+      <button class="btn btn-primary" type="file" ngf-select="uploadFiles($file)" accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
+        选择文件</button>
+      <br> 文件:
+      <div style="font:smaller">{{f.name}} {{f.$error}} {{f.$errorParam}}
+        <span class="progress" ng-show="f.progress >= 0">
+          <div style="width:{{f.progress}}%" ng-bind="f.progress + '%'"></div>
+        </span>
+      </div>
+      <div class="progress progress-striped active">
+         <div class="progress-bar progress-bar-success" role="progressbar"
+            aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+            style="width: {{f.progress}}%;">
+            <span class="sr-only">{{f.progress}}% 完成</span>
+         </div>
+      </div>
+
+      {{errorMsg}}
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="edit_name" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          &times;
+        </button>
+        <h4 class="modal-title" id="myModalLabel">
+          更改用户名
+        </h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" role="form" ng-submit="update_username()">
+          <div class="form-group col-sm-12">
+            <h4>更改用户名</h4>
+            <p>我们关注您的隐私，您可以添加新的个人邮箱。添加后，请前往该邮箱点击邮箱确认链接。</p>
+          </div>
+          <div class="form-group">
+            <label for="firstname" class="col-sm-2 control-label">名字</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="firstname" placeholder="请输入名字" ng-model="username">
+            </div>
+          </div>
+          <label class="text-danger">{{error_message}}</label>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="username_close" class="btn btn-default" data-dismiss="modal">关闭
+        </button>
+        <button type="submit" class="btn btn-primary" ng-click="update_username()">
+          提交更改
+        </button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="edit_password" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          &times;
+        </button>
+        <h4 class="modal-title" id="myModalLabel">
+          更改密码
+        </h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" role="form" ng-submit="update_password_func()">
+          <div class="form-group col-sm-12">
+            <p>密码需区分大小写，由6到20个字符组成，至少包括一个数字和字母。 安全性较高的密码通常同时包含大小写字母、数字和特殊符号。
+            </p>
+          </div>
+          <div class="form-group">
+            <label for="firstname" class="col-sm-3 control-label">旧密码</label>
+            <div class="col-sm-9">
+              <input type="password" class="form-control" id="firstname" placeholder="输入旧密码" ng-model="update_password.password">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="firstname" class="col-sm-3 control-label">新密码</label>
+            <div class="col-sm-9">
+              <input type="password" class="form-control" id="firstname" placeholder="由6到20个字符组成，至少包括一个数字和字母。" ng-model="update_password.new_password">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="firstname" class="col-sm-3 control-label">确认新密码</label>
+            <div class="col-sm-9">
+              <input type="password" class="form-control" id="firstname" placeholder="再次输入新密码" ng-model="password_again">
+            </div>
+          </div>
+          <label class="text-danger">{{error_message_password}}</label>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="password_close" class="btn btn-default" data-dismiss="modal">关闭
+        </button>
+        <button type="submit" class="btn btn-primary" ng-click="update_password_func()">
+          提交更改
+        </button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>

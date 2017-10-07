@@ -1,0 +1,29 @@
+<div ng-include src="'header.html'"></div>
+
+<div class="container">
+  <table class="table">
+    <caption>所有同道</caption>
+    <thead>
+      <tr>
+        <th>头像</th>
+        <th>姓名</th>
+        <th>城市</th>
+        <th>类型</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="peer in pagedItems">
+        <td><a ng-href="#/peers/{{peer.peersId}}"><img ng-src="{{peer.imageUrl}}" alt="" width="40px" /></a></td>
+        <td>{{peer.name}}</td>
+        <td>{{peer.city}}</td>
+        <td><span class="label label-default" ng-repeat="tag in peer.peer_tags">{{tag | peer_tags_translate}}</span></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <td colspan="3">
+        <button class="btn" href="#" ng-class="nextPageDisabledClass()"
+          ng-click="loadMore()">加载更多</button>
+      </td>
+    </tfoot>
+  </table>
+</div>

@@ -1,0 +1,113 @@
+<div ng-include src="'header.html'"></div>
+
+<div class="container">
+  <div class="input-group">
+    <input type="text" class="form-control" ng-model="searchText" placeholder="搜索相关同道或是话题">
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="button">
+        搜索
+      </button>
+    </span>
+  </div>
+  <br>
+  <!-- /input-group -->
+  <ul id="myTab" class="nav nav-tabs">
+    <li class="active">
+      <a href="#peers_search" data-toggle="tab">同道</a>
+    </li>
+    <li><a href="#topics_search" data-toggle="tab">话题</a></li>
+  </ul>
+  <br>
+  <div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="peers_search">
+      <div>
+        <label class="checkbox-inline">
+          <input type="checkbox" ng-model="peerfilters['1']" value="学神">学神
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" ng-model="peerfilters['2']" value="玩霸">玩霸
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" ng-model="peerfilters['3']" value="创客">创客
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" ng-model="peerfilters['4']" value="职咖">职咖
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" ng-model="peerfilters['5']" value="极客">极客
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" ng-model="peerfilters['6']" value="文艺">文艺
+        </label>
+      </div>
+      <br>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>头像</th>
+            <th>姓名</th>
+            <th>城市</th>
+            <th>类型</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="peer in peers | peer_search_filter:peerfilters | filter:searchText">
+            <td>
+              <a ng-href="#/peers/{{peer.peersId}}">
+                <img ng-src="{{peer.imageUrl}}" alt="" width="40px" />
+              </a>
+            </td>
+            <td>{{peer.name}}</td>
+            <td>{{peer.city}}</td>
+            <td>
+              <span class="label label-default" ng-repeat="tag in peer.peer_tags_translated">{{tag}}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tab-pane fade" id="topics_search">
+      <div>
+        <label class="checkbox-inline">
+          <input type="checkbox" ng-model="topicfilters['1']" value="职场秘籍">职场秘籍
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" ng-model="topicfilters['2']" value="创业宝典">创业宝典
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" ng-model="topicfilters['3']" value="生活心得">生活心得
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" ng-model="topicfilters['4']" value="技能传授">技能传授
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" ng-model="topicfilters['5']" value="名校探索">名校探索
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" ng-model="topicfilters['6']" value="前人指路">前人指路
+        </label>
+      </div>
+      <div class="panel panel-default" ng-repeat="topic in topics | filter:searchText | topic_search_filter:topicfilters">
+        <div class="panel-heading">{{topic.title}}</div>
+        <table class="table">
+          <td>
+            <img ng-src="{{topic.imageUrl}}" alt="" width="30px" />
+          </td>
+          <td>价格：{{topic.price}} / {{topic.time}}分钟</td>
+          <td>同道：<a href="#/peers/{{topic.peerId}}">{{topic.name}}</a></td>
+        </table>
+        <p>{{topic.content}}</p>
+        <span class="label label-default" ng-repeat="tag in topic.topic_tags_translated">{{tag}}</span>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+<script>
+  $('#myTab a').click(function(e) {
+    e.preventDefault()
+    $(this).tab('show')
+  });
+</script>

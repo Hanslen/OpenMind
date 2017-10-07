@@ -1,0 +1,84 @@
+<div ng-include src="'header.html'"></div>
+
+<div class="container">
+  <h3>{{discussion.title}}</h3>
+  <img ng-src="{{discussion.imageUrl}}" alt="img" />
+  <p>举办日期：{{discussion.startTime | date:'medium'}}</p>
+  <p>{{discussion.content}}</p>
+  <p>价格：{{discussion.price}}元</p>
+  <p>现在报名情况：{{discussion.currentNum}}/{{discussion.maxNum}}</p>
+  <div ng-if="isAuthenticated()">
+    <button ng-if="!checked" type="button" name="button" class="btn btn-primary" ng-click="bookDiscussion(discussion.discussionId)">收藏</button>
+    <button ng-if="checked" type="button" name="button" class="btn btn-primary disabled" ng-click="bookDiscussion(discussion.discussionId)">已收藏</button>
+    <button ng-if="discussion.currentNum <= discussion.maxNum && !already_applied" type="button" name="button" class="btn btn-primary" data-toggle="modal" data-target="#ensureApplication">报名</button>
+    <button ng-if="already_applied" type="button" name="button" class="btn btn-primary disabled">已经报名</button>
+    <p ng-if="discussion.currentNum >= discussion.maxNum">人数已满，停止报名</p>
+  </div>
+  <div ng-if="!isAuthenticated()">
+    登录后报名参加<a href="#/discussions">研讨</a>
+  </div>
+  <br>
+  <legend>评论</legend>
+  <ul>
+    <li ng-repeat="comment in comments">
+      <img ng-src="{{comment.imageUrl}}" alt="" width="30px" ng-href="#/user_profile/{{comment.userId}}" />
+      <a ng-href="#/user_profile/{{comment.userId}}">
+        <strong>{{comment.name}}</strong>
+      </a>
+      <button type="button" ng-disabled="comment.liked" class="btn btn-default btn-sm" ng-if="!already_liked(comment.discussionCommentId)" ng-click="like_comment(comment)">
+        <span class="glyphicon glyphicon-thumbs-up"></span> {{comment.likeNum}}
+      </button>
+      <button type="button" disabled="true" class="btn btn-default btn-sm" ng-if="already_liked(comment.discussionCommentId)">
+        <span class="glyphicon glyphicon-thumbs-up"></span> {{comment.likeNum}}
+      </button>
+      <a ng-if="isAdmin()" style="float:right" ng-click="deleteDiscussionComment(comment.discussionCommentId)">删除</a>
+      <p>评论时间：{{comment.commentTime}}</p>
+      <p>{{comment.content}}</p>
+      <hr>
+    </li>
+    <div class="panel panel-default" ng-if="isAuthenticated()">
+      <div class="panel-heading">
+        <h4 class="panel-title">添加评论</h4>
+      </div>
+      <div id="collapseOne" class="panel-collapse collapse in">
+        <div class="panel-body">
+          <form role="form" ng-submit="add_comment()">
+            <div class="form-group">
+              <textarea class="form-control" rows="3" placeholder="请输入内容" ng-model="$parent.comment_content"></textarea>
+            </div>
+            <div class="text-right">
+              <button type="submit" class="btn btn-primary">确认</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </ul>
+</div>
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="ensureApplication" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          &times;
+        </button>
+        <h4 class="modal-title" id="myModalLabel">
+          研讨{{discussion.title}}报名
+        </h4>
+      </div>
+      <div class="modal-body">
+        一旦报名不可取消，请付款{{discussion.price}}元
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="apply_close">关闭
+        </button>
+        <button type="button" class="btn btn-primary" ng-click="apply(discussion.discussionId)">
+          确认报名
+        </button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal -->

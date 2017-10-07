@@ -1,0 +1,23 @@
+<div ng-include src="'header.html'"></div>
+
+<div class="container">
+  <table class="table">
+    <caption>收藏的电台</caption>
+    <thead>
+      <tr>
+        <th>图片</th>
+        <th>标题</th>
+        <th>日期</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="broadcast in broadcasts">
+        <td><a ng-href="#/broadcasts/{{broadcast.broadcastId}}"><img ng-src="{{broadcast.imageUrl}}" alt="" /></a></td>
+        <td>{{broadcast.title}}</td>
+        <td>{{broadcast.startTime | date:'medium'}}</td>
+        <td><button type="button" name="button" class="btn btn-danger" ng-click="deleteBroadcast(broadcast, broadcast.broadcastId)">删除</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

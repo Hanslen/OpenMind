@@ -1,0 +1,47 @@
+﻿<div ng-include src="'header.html'"></div>
+
+<div class="container">
+	<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label class="col-sm-2 control-label">自我描述</label>
+          <div class="col-sm-10">
+            <textarea class="form-control" ng-model="application.cv" value="{{application.cv}}"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">教育经历</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" ng-model="application.education" value="{{application.education}}"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">标签</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" ng-model="application.tags" value="{{application.tags}}"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">关键词</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" ng-model="application.keyWords" value="{{application.keyWords}}"/>
+          </div>
+        </div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">反馈</label>
+			<div class="col-sm-10">
+				<p>{{application.comments}}</p>
+			</div>
+		</div>
+        <div class="form-group">
+          <div class="col-sm-11"></div>
+          <button class="btn" ng-click="apply_func()" ng-if="!checkIsApplying()" style="float:right">申请/更新</button>
+          <button class="btn" ng-click="update_func()" ng-if="checkIsApplying()" style="float:right"disabled>申请/更新</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,37 @@
+<div ng-include src="'header.html'"></div>
+
+<div class="container">
+  <h3>预约讨论：
+    <strong>{{topic.title}}</strong>
+  </h3>
+  <img ng-src="{{topic.imageUrl}}" alt="img" />
+  <p>{{topic.content}}</p>
+  <br/>
+
+  <legend>请选择预约时间时间（将进行{{topic.time}}分钟）</legend>
+  <datetimepicker data-ng-model="data.date"></datetimepicker>
+  <p>当前选择的时间: {{ data.date | date:'yyyy-MM-dd HH:mm' }}</p>
+  <button class="btn btn-primary" type="button" name="button" ng-click="add_time(data.date)">添加当前时间</button>
+
+  <li ng-repeat="time in selected_time">{{time}}</li>
+
+
+
+  <legend>给领路人的留言</legend>
+  <div class="panel panel-default" ng-if="isAuthenticated()">
+    <div class="panel-heading">
+      <h4 class="panel-title">您想对领路人说的话</h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in">
+      <div class="panel-body">
+        <div class="form-group">
+          <textarea class="form-control" rows="5" placeholder="请输入内容" ng-model="$parent.comment_content"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <legend>确认预约</legend>
+  <button class="btn btn-success" type="button" name="button" ng-click="make_appointment()">点击进行预约</button>
+
+</div>

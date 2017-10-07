@@ -1,0 +1,49 @@
+<!-- Navbar section -->
+<nav class="navbar navbar-default" role="navigation">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
+      <span class="sr-only">Toggle navigation</span>
+    </button>
+    <a class="navbar-brand" href="#/">OpenMind</a>
+  </div>
+  <div class="collapse navbar-collapse navbar-right" id="navbar-collapse-01">
+    <ul class="nav navbar-nav">
+      <li><a href="#/search">搜索</a></li>
+      <li><a href="#/broadcasts">电台</a></li>
+      <li><a href="#/peers">同道</a></li>
+      <li><a href="#/discussions">研讨</a></li>
+      <li><a href="#/forums">Forums</a></li>
+	  <li ng-if="checkCanApply()"><a href="#/application">成为导师</a></li>
+      <li ng-if="!isAuthenticated()"><a href="#/login">Login</a></li>
+      <li ng-if="!isAuthenticated()"><a href="#/signup">Signup</a></li>
+      <li class="dropdown" ng-if="isAuthenticated()">
+        <a href="" class="dropdown-toggle" data-toggle="dropdown">未读消息<span class="badge">{{messages.length}}</span>
+          <b ng-if="messages.length" class="caret"></b>
+        </a>
+        <ul class="dropdown-menu" id="socketMessage">
+          <li ng-repeat="message in messages"><a ng-href="{{message.targetUrl}}" ng-click="viewMessage(message)">{{message.content}}</a></li>
+        </ul>
+      </li>
+      <li class="dropdown" ng-if="isAuthenticated()">
+        <a href="" class="dropdown-toggle" data-toggle="dropdown">
+            {{user.name}}
+            <b class="caret"></b>
+         </a>
+        <ul class="dropdown-menu">
+		  <li><a ng-if ="checkIsAdmin()" href="#/admin">后台管理</a></li>
+          <li><a href="#/dashboard/account">基本信息</a></li>
+          <li><a href="#/dashboard/appointments">我的预约</a></li>
+          <li><a href="#/dashboard/broadcast">收藏的电台</a></li>
+          <li><a href="#/dashboard/discussion">收藏的研讨</a></li>
+          <li><a href="#/dashboard/topic">收藏的话题</a></li>
+          <li><a href="#/dashboard/message">消息</a></li>
+		  
+          <li class="divider"></li>
+          <li><a href="#fakelink" ng-click="logout()">退出登录</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <!-- /.navbar-collapse -->
+</nav>
+<!-- /navbar -->

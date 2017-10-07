@@ -1,0 +1,49 @@
+<div ng-include src="'header.html'"></div>
+
+
+<div class="container">
+
+  <!-- Main component for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <h1>特别牛逼的培训</h1>
+    <p>寄君一曲，只为中西合璧，舞袖飞扬，跳起教育智光，OpenMind为你撑起成功的桥梁。</p>
+    <p>教——我们是良师；育——我们是益友。</p>
+    <p>2015年08月15日 12:23</p>
+    <div class="input-group">
+      <input type="text" class="form-control" ng-model="searchText" placeholder="搜索相关同道或是话题">
+      <span class="input-group-btn">
+        <a class="btn btn-primary" ng-href="#/search/{{searchText}}" type="submit">
+            搜索
+          </a>
+      </span>
+    </div>
+
+  </div>
+
+</div>
+<!-- /container -->
+
+
+<div class="container">
+  <table class="table">
+    <caption>受欢迎 peers</caption>
+    <thead>
+      <tr>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>信息</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Tanmay</td>
+        <td>Bangalore</td>
+      </tr>
+      <tr>
+        <td>Sachin</td>
+        <td>Mumbai</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
