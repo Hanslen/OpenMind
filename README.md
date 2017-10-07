@@ -25,11 +25,11 @@ MySQL is choosed as the database as it is generally supported.
 4. Open the browser and go to the url `localhost:3000`
 
 ### Database Config
-1. 打开 MySQL
-2. 创建 Database  `CREATE DATABASE openmind`
-3. 建表 文件url为 `/database/database.sql`
-4. 插入测试数据 `database/*_insert.sql`
-5. Database 配置文件在 `/openMind/service/database.js`，根据自己主机更改密码
+1. Open MySQL
+2. Create Database  `CREATE DATABASE openmind`
+3. Crea table file url is  `/database/database.sql`
+4. Import test data `database/*_insert.sql`
+5. Database configure file is located at `/openMind/service/database.js`，change password for your local host.
 
 ## Database
 ### E-R model
@@ -40,38 +40,38 @@ The link is for E-R model process group [https://www.processon.com/myteams/55a8a
 
 | Url                    | Need auth? | Content                         | Comment              |
 | ---------------------- | ---------- | ------------------------------- | -------------------- |
-| /                      | N          | 网站首页，显示热门内容                     | 热门内容需要按照一个算法进行排序     |
-| /login                 | N          | 用户登录，用微博，微信等                    | 登录后不能再进入当前页面         |
-| /signup                | Y          | 用户注册                            | 登录后不能再进入当前页面         |
-| /username              | Y          | Personal profile                | 暂时不添加该功能             |
-| /dashboard/broadcast   | Y          | 收藏过的 broadcast，收听过的 broadcast   | 收藏的 broadcast 会收到提醒  |
-| /dashboard/discussion  | Y          | 收藏过的 discussion，参与过的 discussion | 收藏的 discussion 会收到提醒 |
-| /dashboard/dialogue    | Y          | 收藏过的 dialogue，参与过的 dialogue     | 收藏的 dialogue 会收到提醒   |
-| /dashboard/account     | Y          | 基本信息，社交网络，财务信息                  |                      |
-| /search                | N          | 搜索的页面（可以搜索话题以及导师）               | 可以进行 tag 分类          |
-| /broadcasts            | N          | Broadcast definition，广播信息       | 按照时间顺序排序             |
-| /broadcasts/:id        | N          | 特定广播的信息                         | 内嵌红点                 |
-| /discussions           | N          | Discussion definition，帮助信息      | 按照时间顺序排序             |
-| /discussions/:id       | N          | 特定 discussion 的信息               | 可以进行报名               |
-| /peers                 | N          | 全部导师信息                          | 按照受欢迎程度排序            |
-| /peers/:id             | N          | 特定 peer 的信息                     | 登录后可以预约谈话            |
-| /peers/:id/appointment | Y          | 进行挑选时间的页面                       | 收藏的 dialogue 会收到提醒   |
+| /                      | N          | MainPage, host hits             | Hot hits will be sorted     |
+| /login                 | N          | User login, wechat, weibo       | After the user has loggin, they will not be able to go back to this page         |
+| /signup                | Y          | Use register                            | After the user has loggin, they will not be able to go back to this page         |
+| /username              | Y          | Personal profile                |  Waiting for update             |
+| /dashboard/broadcast   | Y          | Collected broadcast，listened broadcast   | collect a broadcast will receive notification  |
+| /dashboard/discussion  | Y          | collected discussion，joined discussion | collect discussion will receive notification |
+| /dashboard/dialogue    | Y          | collected dialogue，joined dialogue     | collect dialogue will receive notification   |
+| /dashboard/account     | Y          | basic information，social network，finicial information                  |                      |
+| /search                | N          | searched page（can search topic and teacher）               | sort by tags          |
+| /broadcasts            | N          | Broadcast definition，broadcast information       | sorted by time             |
+| /broadcasts/:id        | N          | specific broadcast information                         | hot points                 |
+| /discussions           | N          | Discussion definition，helper information      | sorted by time             |
+| /discussions/:id       | N          | specific discussion infomation               | provided register function               |
+| /peers                 | N          | all teacher's information                          | sorted by popularity            |
+| /peers/:id             | N          | specific peer information                     | after loggin, can register for talking            |
+| /peers/:id/appointment | Y          | select time page                       | collect dialogue will receive notification   |
 
 ### Backend structures
 
 | Url                      | Need auth? | Method | Request                   | Response                                 | Comments                 |
 | ------------------------ | ---------- | ------ | ------------------------- | ---------------------------------------- | ------------------------ |
-| /auth/login              | N          | POST   | email, password           | 401, jwt                                 | db 验证邮箱密码是否正确，如果错误返回错误信息 |
-| /auth/signup             | N          | POST   | email, username, password | 401, 403, jwt                            | 检查邮箱是否已经占用，如果错误返回错误信息    |
-| /content                 | N          | GET    |                           | 获取全部的 topic （包括 broadcast, discussions 等）的内容并按照热度排序 | 根据某个特定算法                 |
-| /content/broadcasts      | N          | GET    |                           | 获取全部 casts                               |                          |
-| /content/broadcasts/:id  | N          | GET    |                           | 获取特定的 Broadcast                          |                          |
-| /content/discussions     | N          | GET    |                           | 获取全部 discussions                         |                          |
-| /content/discussions/:id | N          | GET    |                           | 获取特定的 discussion                         |                          |
-| /content/peers           | N          | GET    |                           | 获取全部 peers                               |                          |
-| /content/peers/:id       | N          | GET    |                           | 获取特定的 peer                               |                          |
-| /user/broadcasts         | Y          | GET    |                           | 获取                                       |                          |
+| /auth/login              | N          | POST   | email, password           | 401, jwt                                 | db check is email matched with password |
+| /auth/signup             | N          | POST   | email, username, password | 401, 403, jwt                            | check email has been registered, or error    |
+| /content                 | N          | GET    |                           | get all topic （including broadcast, discussions etc）and sorted by hot                 |
+| /content/broadcasts      | N          | GET    |                           | get all casts                               |                          |
+| /content/broadcasts/:id  | N          | GET    |                           | get specific Broadcast                          |                          |
+| /content/discussions     | N          | GET    |                           | get all discussions                         |                          |
+| /content/discussions/:id | N          | GET    |                           | get specific discussion                         |                          |
+| /content/peers           | N          | GET    |                           | get all peers                               |                          |
+| /content/peers/:id       | N          | GET    |                           | get specific peer                               |                          |
+| /user/broadcasts         | Y          | GET    |                           | get                                       |                          |
 | /user/broadcasts/:id     | Y          | GET    |                           |                                          |                          |
 
 ## Testing
-- [ ] 测试 login 页面
+- [ ] test login page
