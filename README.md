@@ -1,8 +1,6 @@
 # OpenMind
 OpenMind is a cross-culture communication development platform enabling inspiring discussions/conversations based on topics between Chinese teenagers and international peers.
 
-This project is initiated on March 2015 by **Luyang Xu** (luyangxu@outlook.com) for Ingenuity Prize UK.
-
 ## Description
 This project is developed with frameworks of
 - Bootstrap 3
